@@ -1,0 +1,32 @@
+/* .experience-page {
+  display: flex;
+} */
+
+.form-side {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e9e5e5;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.inputField {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3.5rem;
+  gap: 90px;
+  /* width: 798px; */
+}
+
+.form {
+  margin-left: 10%;
+}
+
+.employer {
+  margin-top: 25px;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}

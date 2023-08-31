@@ -1,0 +1,41 @@
+.Header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.Header h1 {
+  font-size: 17px;
+}
+
+.Header h2 {
+  font-size: 13px;
+}
+
+.page-header {
+  width: 90%;
+}
+
+.page-header-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  border: 1px solid black;
+  margin-top: 8px;
+}
+
+.back-btn {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.back-btn-icon {
+  width: 10px;
+  height: 16px;
+}

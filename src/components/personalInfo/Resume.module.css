@@ -1,0 +1,9 @@
+.resume {
+  padding: 4rem;
+}
+
+.img {
+  width: 150px;
+  float: right;
+  border-radius: 100px;
+}

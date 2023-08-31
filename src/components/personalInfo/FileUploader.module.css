@@ -1,0 +1,11 @@
+.button-upload {
+  background-color: #0e80bf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 83px;
+  height: 21px;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}

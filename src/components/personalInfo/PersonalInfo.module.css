@@ -1,0 +1,80 @@
+.PersonalInfo {
+  display: flex;
+}
+
+.form-side {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e9e5e5;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.resume-side {
+  width: 50vw;
+}
+
+.inputField {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3.5rem;
+  gap: 90px;
+}
+
+.form {
+  margin-left: 10%;
+}
+
+.photoUpload {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+.btn {
+  display: flex;
+}
+
+.about-me {
+  margin-top: 2rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.txt {
+  width: 100%;
+  border-radius: 5px;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.email-wrapper {
+  margin-top: 1.5rem;
+}
+
+.mobile-number-wrapper {
+  margin-top: 1.5rem;
+}
+
+.btn-next {
+  height: 30px;
+  width: 100px;
+  background: #6b40e3;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: 1.5rem;
+}
+.btn-back {
+  height: 30px;
+  width: 100px;
+  background: #6b40e3;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: left;
+  margin-top: 1.5rem;
+}
