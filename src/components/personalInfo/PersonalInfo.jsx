@@ -10,7 +10,6 @@ import AboutMe from "./AboutMe";
 
 function PersonalInfo() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
-
   const { firstName, lastName, email, mobileNumber } = resumeData;
 
   const firstNameHandler = e => {
@@ -76,15 +75,20 @@ function PersonalInfo() {
               changeHandler={mobileNumberHandler}
             />
           </div>
-          <button
-            className={classes["btn-next"]}
-            onClick={navigateToExperiencePage}
-          >
-            შემდეგი
-          </button>
-          <button className={classes["btn-back"]} onClick={navigateToFirstPage}>
-            უკან
-          </button>
+          <div className={classes["btn-style"]}>
+            <button
+              className={classes["btn-next"]}
+              onClick={navigateToExperiencePage}
+            >
+              შემდეგი
+            </button>
+            <button
+              className={classes["btn-back"]}
+              onClick={navigateToFirstPage}
+            >
+              უკან
+            </button>
+          </div>
         </form>
       </div>
       <div className={classes["resume-side"]}>

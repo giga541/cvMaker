@@ -4,8 +4,18 @@ import classes from "./Resume.module.css";
 
 function Resume() {
   const { resumeData } = useContext(ResumeContext);
-  const { firstName, lastName, aboutMe, email, mobileNumber, profileImage } =
-    resumeData;
+  const {
+    firstName,
+    lastName,
+    aboutMe,
+    email,
+    mobileNumber,
+    profileImage,
+    position,
+    employer,
+    startingDate,
+    finishingDate,
+  } = resumeData;
 
   return (
     <div className={classes.resume}>
@@ -21,6 +31,10 @@ function Resume() {
       <p>{aboutMe}</p>
       <p>{email}</p>
       <p>{mobileNumber}</p>
+      <p>{position}</p>
+      <p>{employer}</p>
+      <p>{startingDate}</p>
+      <p>{finishingDate}</p>
     </div>
   );
 }

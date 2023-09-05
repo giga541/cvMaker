@@ -1,6 +1,6 @@
-/* .experience-page {
+.experience-page {
   display: flex;
-} */
+}
 
 .form-side {
   width: 50vw;
@@ -15,7 +15,6 @@
   justify-content: space-between;
   margin-top: 3.5rem;
   gap: 90px;
-  /* width: 798px; */
 }
 
 .form {
@@ -29,4 +28,50 @@
 .dates {
   display: flex;
   justify-content: space-between;
+}
+
+.line {
+  border: 1px solid #c1c1c1;
+  margin-top: 30px;
+}
+
+.add-btn {
+  width: 250px;
+  height: 40px;
+  background: #62a1eb;
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.btn-next {
+  height: 30px;
+  width: 100px;
+  background: #6b40e3;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: 1.5rem;
+}
+.btn-back {
+  height: 30px;
+  width: 100px;
+  background: #6b40e3;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: left;
+  margin-top: 1.5rem;
+}
+
+.resume-side {
+  width: 50vw;
 }

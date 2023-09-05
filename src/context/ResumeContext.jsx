@@ -10,6 +10,10 @@ export function ResumeProvider({ children }) {
     email: "",
     mobileNumber: "",
     profileImage: null,
+    position: "",
+    employer: "",
+    startingDate: "",
+    finishingDate: "",
   });
 
   return (
