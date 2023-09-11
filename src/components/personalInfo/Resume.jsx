@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
+import Line from "../experience/Line";
 import classes from "./Resume.module.css";
 
 function Resume() {
@@ -15,6 +16,7 @@ function Resume() {
     employer,
     startingDate,
     finishingDate,
+    experienceDesc,
   } = resumeData;
 
   return (
@@ -28,13 +30,18 @@ function Resume() {
       <h1>
         {firstName} {lastName}
       </h1>
-      <p>{aboutMe}</p>
       <p>{email}</p>
-      <p>{mobileNumber}</p>
+      <p className={classes["mobile-number"]}>{mobileNumber}</p>
+      {aboutMe.length > 0 && (
+        <span className={classes["about-me"]}>ჩემ შესახებ</span>
+      )}
+      <p>{aboutMe}</p>
       <p>{position}</p>
       <p>{employer}</p>
       <p>{startingDate}</p>
       <p>{finishingDate}</p>
+      <p>{experienceDesc}</p>
+      {/* <Line /> */}
     </div>
   );
 }

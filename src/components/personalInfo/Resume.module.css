@@ -7,3 +7,20 @@
   float: right;
   border-radius: 100px;
 }
+
+.about-me {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 34px;
+  color: #f93b1d;
+}
+
+.mobile-number {
+  margin-bottom: 50px;
+}
+
+p {
+  margin-top: 5px;
+}

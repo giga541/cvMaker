@@ -1,5 +1,5 @@
-.experience-page {
-  display: flex;
+.resume-side {
+  width: 50vw;
 }
 
 .form-side {
@@ -21,35 +21,17 @@
   margin-left: 10%;
 }
 
-.employer {
-  margin-top: 25px;
-}
-
-.dates {
+.style {
   display: flex;
   justify-content: space-between;
 }
 
-.line {
-  border: 1px solid #c1c1c1;
-  margin-top: 30px;
+.options {
+  margin-top: 43px;
+  width: 50%;
 }
 
-.add-btn {
-  width: 250px;
-  height: 40px;
-  background: #62a1eb;
-  border-radius: 4px;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin-top: 30px;
-}
-
-.btn-next {
+.btn-finish {
   height: 30px;
   width: 100px;
   background: #6b40e3;
@@ -71,8 +53,4 @@
   cursor: pointer;
   float: left;
   margin-top: 1.5rem;
-}
-
-.resume-side {
-  width: 50vw;
 }

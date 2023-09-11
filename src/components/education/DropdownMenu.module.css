@@ -1,0 +1,35 @@
+.dropdown {
+  margin-top: 25px;
+}
+.dropdown-toggle {
+  width: 240px;
+  padding: 8px;
+  /* margin: 5px 0; */
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.quality {
+  font-size: 11px;
+}
+
+.dropdown-toggle :active {
+  border: black;
+}
+
+.arr-down {
+  margin-left: 80px;
+}
+.arr-up {
+  margin-left: 80px;
+}
+
+.items {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 5px;
+}

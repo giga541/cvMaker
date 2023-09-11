@@ -6,11 +6,11 @@ import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import Resume from "./Resume";
 import { useNavigate } from "react-router-dom";
-import AboutMe from "./AboutMe";
+import InputTextArea from "./InputTextArea";
 
 function PersonalInfo() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
-  const { firstName, lastName, email, mobileNumber } = resumeData;
+  const { firstName, lastName, email, mobileNumber, aboutMe } = resumeData;
 
   const firstNameHandler = e => {
     setResumeData({ ...resumeData, firstName: e.target.value });
@@ -26,6 +26,10 @@ function PersonalInfo() {
 
   const mobileNumberHandler = e => {
     setResumeData({ ...resumeData, mobileNumber: e.target.value });
+  };
+
+  const aboutMeHandler = e => {
+    setResumeData({ ...resumeData, aboutMe: e.target.value });
   };
 
   const navigate = useNavigate();
@@ -59,7 +63,11 @@ function PersonalInfo() {
             <p className={classes.photoUpload}>პირადი ფოტოს ატვირთვა</p>
             <FileUploader />
           </div>
-          <AboutMe aboutMe="ჩემ შესახებ(არასავალდებულო)" />
+          <InputTextArea
+            value={aboutMe}
+            name="ჩემ შესახებ(არასავალდებულო)"
+            changeHandler={aboutMeHandler}
+          />
           <div className={classes["email-wrapper"]}>
             <InputField
               inputFieldHint="ელ.ფოსტა"

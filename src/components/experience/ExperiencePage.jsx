@@ -2,7 +2,7 @@ import classes from "./ExperiencePage.module.css";
 import Header from "../personalInfo/Header";
 import InputField from "../personalInfo/InputField";
 import Date from "./Date";
-import AboutMe from "../personalInfo/AboutMe";
+import InputTextArea from "../personalInfo/InputTextArea";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
@@ -19,7 +19,8 @@ function ExperiencePage() {
   };
 
   const { resumeData, setResumeData } = useContext(ResumeContext);
-  const { position, employer, startingDate, finishingDate } = resumeData;
+  const { position, employer, startingDate, finishingDate, experienceDesc } =
+    resumeData;
 
   const posHandler = e => {
     setResumeData({ ...resumeData, position: e.target.value });
@@ -30,12 +31,18 @@ function ExperiencePage() {
   };
 
   const startingDateHandler = e => {
+    console.log(e.target.value);
     setResumeData({ ...resumeData, startingDate: e.target.value });
   };
 
   const finishingDateHandler = e => {
     setResumeData({ ...resumeData, finishingDate: e.target.value });
   };
+
+  const experienceDescHandler = e => {
+    setResumeData({ ...resumeData, experienceDesc: e.target.value });
+  };
+
   return (
     <div className={classes["experience-page"]}>
       <div className={classes["form-side"]}>
@@ -65,12 +72,16 @@ function ExperiencePage() {
             />
 
             <Date
-              name="დამთავრების თარიღი"
+              name="დასრულების თარიღი"
               value={finishingDate}
               changeHandler={finishingDateHandler}
             />
           </div>
-          <AboutMe aboutMe="აღწერა" />
+          <InputTextArea
+            name="აღწერა"
+            value={experienceDesc}
+            changeHandler={experienceDescHandler}
+          />
           <div className={classes.line}></div>
           <button className={classes["add-btn"]}>
             მეტი გამოცდილების დამატება
@@ -93,7 +104,7 @@ function ExperiencePage() {
       </div>
       <div className={classes["resume-side"]}>
         <Resume />
-        <Line />
+        {/* <Line /> */}
       </div>
     </div>
   );
