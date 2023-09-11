@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 import classes from "./DropdownMenu.module.css";
 
-function DropdownMenu() {
+function DropdownMenu({ changeHandler, value }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const list = [
@@ -22,11 +22,16 @@ function DropdownMenu() {
     setIsOpen(!isOpen);
   };
 
+  const handleOptionClick = selectedOption => {
+    changeHandler(selectedOption);
+    setIsOpen(false);
+  };
+
   return (
     <div className={classes.dropdown}>
       <p className={classes.quality}>ხარისხი</p>
       <button className={classes["dropdown-toggle"]} onClick={toggleDropdown}>
-        აირჩიეთ
+        {value || "აირჩიეთ"}
         {!isOpen ? (
           <AiOutlineCaretDown className={classes["arr-down"]} />
         ) : (
@@ -35,8 +40,12 @@ function DropdownMenu() {
         {isOpen && (
           <div>
             {list.map((item, i) => (
-              <div key={i}>
-                <ol className={classes.items}>{item}</ol>
+              <div
+                key={i}
+                className={classes.items}
+                onClick={() => handleOptionClick(item)}
+              >
+                {item}
               </div>
             ))}
           </div>

@@ -18,6 +18,7 @@ export function ResumeProvider({ children }) {
     eduCentre: "",
     eduFinishDate: "",
     educationCentreDesc: "",
+    selectOption: "",
   });
 
   return (

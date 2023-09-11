@@ -19,6 +19,7 @@ function Resume() {
     eduCentre,
     eduFinishDate,
     educationCentreDesc,
+    selectOption,
   } = resumeData;
 
   return (
@@ -48,6 +49,7 @@ function Resume() {
       <p>{eduCentre}</p>
       <p className={classes["edu-finish-date"]}>{eduFinishDate}</p>
       <p> {educationCentreDesc}</p>
+      <p> {selectOption}</p>
       {/* <Line /> */}
     </div>
   );

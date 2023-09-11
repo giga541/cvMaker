@@ -17,7 +17,8 @@ function EducationPage() {
   };
 
   const { resumeData, setResumeData } = useContext(ResumeContext);
-  const { eduCentre, eduFinishDate, educationCentreDesc } = resumeData;
+  const { eduCentre, eduFinishDate, educationCentreDesc, selectOption } =
+    resumeData;
 
   const eduCentreHandler = e => {
     setResumeData({ ...resumeData, eduCentre: e.target.value });
@@ -29,6 +30,10 @@ function EducationPage() {
 
   const educationDescHandler = e => {
     setResumeData({ ...resumeData, educationCentreDesc: e.target.value });
+  };
+
+  const selectOptionHandler = e => {
+    setResumeData({ ...resumeData, selectOption: e });
   };
 
   return (
@@ -46,7 +51,10 @@ function EducationPage() {
           </div>
           <div className={classes.style}>
             <div>
-              <DropdownMenu />
+              <DropdownMenu
+                changeHandler={selectOptionHandler}
+                value={selectOption}
+              />
             </div>
             <div>
               <Date
