@@ -1,0 +1,15 @@
+.about-me {
+  margin-top: 2rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.txt {
+  width: 100%;
+  border-radius: 5px;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+}

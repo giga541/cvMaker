@@ -33,21 +33,6 @@
   display: flex;
 }
 
-.about-me {
-  margin-top: 2rem;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.txt {
-  width: 100%;
-  border-radius: 5px;
-  resize: none;
-  outline: none;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
 .email-wrapper {
   margin-top: 1.5rem;
 }
@@ -80,5 +65,5 @@
 }
 
 .btn-style {
-  margin-top: 54px;
+  margin-top: 64px;
 }

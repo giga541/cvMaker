@@ -1,3 +1,7 @@
+.education-page {
+  display: flex;
+}
+
 .resume-side {
   width: 50vw;
 }
@@ -53,4 +57,22 @@
   cursor: pointer;
   float: left;
   margin-top: 1.5rem;
+}
+
+.add-new-edu {
+  width: 250px;
+  height: 40px;
+  background: #62a1eb;
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buttons {
+  margin-top: 104px;
 }

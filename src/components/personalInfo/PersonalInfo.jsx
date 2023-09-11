@@ -33,9 +33,6 @@ function PersonalInfo() {
   };
 
   const navigate = useNavigate();
-  const navigateToFirstPage = () => {
-    navigate("/");
-  };
   const navigateToExperiencePage = () => {
     navigate("/ExperiencePage");
   };
@@ -85,16 +82,11 @@ function PersonalInfo() {
           </div>
           <div className={classes["btn-style"]}>
             <button
+              type="button"
               className={classes["btn-next"]}
               onClick={navigateToExperiencePage}
             >
               შემდეგი
-            </button>
-            <button
-              className={classes["btn-back"]}
-              onClick={navigateToFirstPage}
-            >
-              უკან
             </button>
           </div>
         </form>

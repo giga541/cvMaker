@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import Resume from "../personalInfo/Resume";
-import Line from "./Line";
+// import Line from "./Line";
 
 function ExperiencePage() {
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ function ExperiencePage() {
   };
 
   const startingDateHandler = e => {
-    console.log(e.target.value);
     setResumeData({ ...resumeData, startingDate: e.target.value });
   };
 
@@ -81,19 +80,22 @@ function ExperiencePage() {
             name="აღწერა"
             value={experienceDesc}
             changeHandler={experienceDescHandler}
+            placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
           />
           <div className={classes.line}></div>
           <button className={classes["add-btn"]}>
             მეტი გამოცდილების დამატება
           </button>
-          <div>
+          <div className={classes.buttons}>
             <button
+              type="button"
               className={classes["btn-next"]}
               onClick={navigateToEducationPage}
             >
               შემდეგი
             </button>
             <button
+              type="button"
               className={classes["btn-back"]}
               onClick={navigateToPersonalInfo}
             >

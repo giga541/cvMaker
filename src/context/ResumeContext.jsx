@@ -15,6 +15,9 @@ export function ResumeProvider({ children }) {
     startingDate: "",
     finishingDate: "",
     experienceDesc: "",
+    eduCentre: "",
+    eduFinishDate: "",
+    educationCentreDesc: "",
   });
 
   return (

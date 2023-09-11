@@ -14,7 +14,11 @@ function FirstPage() {
         src={backgroundPicture}
         alt="backgroundPicture"
       />
-      <button onClick={navigateToPersonalPage} className={classes.btn}>
+      <button
+        type="button"
+        onClick={navigateToPersonalPage}
+        className={classes.btn}
+      >
         რეზიუმეს დამატება
       </button>
     </div>

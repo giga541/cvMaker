@@ -24,3 +24,21 @@
 p {
   margin-top: 5px;
 }
+
+.dates {
+  display: flex;
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  color: #919191;
+}
+
+.starting-date {
+  margin-right: 10px;
+}
+
+.edu-finish-date {
+  display: flex;
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  color: #919191;
+}

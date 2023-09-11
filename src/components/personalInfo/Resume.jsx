@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
-import Line from "../experience/Line";
 import classes from "./Resume.module.css";
 
 function Resume() {
@@ -17,6 +16,9 @@ function Resume() {
     startingDate,
     finishingDate,
     experienceDesc,
+    eduCentre,
+    eduFinishDate,
+    educationCentreDesc,
   } = resumeData;
 
   return (
@@ -27,9 +29,9 @@ function Resume() {
         alt="userProfile"
         style={{ visibility: profileImage ? "visible" : "hidden" }}
       />
-      <h1>
+      <h2>
         {firstName} {lastName}
-      </h1>
+      </h2>
       <p>{email}</p>
       <p className={classes["mobile-number"]}>{mobileNumber}</p>
       {aboutMe.length > 0 && (
@@ -38,9 +40,14 @@ function Resume() {
       <p>{aboutMe}</p>
       <p>{position}</p>
       <p>{employer}</p>
-      <p>{startingDate}</p>
-      <p>{finishingDate}</p>
+      <div className={classes.dates}>
+        <p className={classes["starting-date"]}>{startingDate}</p>
+        <p>{finishingDate}</p>
+      </div>
       <p>{experienceDesc}</p>
+      <p>{eduCentre}</p>
+      <p className={classes["edu-finish-date"]}>{eduFinishDate}</p>
+      <p> {educationCentreDesc}</p>
       {/* <Line /> */}
     </div>
   );
