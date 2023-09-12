@@ -2,11 +2,11 @@ import classes from "./PersonalInfo.module.css";
 import Header from "./Header";
 import InputField from "./InputField";
 import FileUploader from "./FileUploader";
-import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import Resume from "./Resume";
-import { useNavigate } from "react-router-dom";
 import InputTextArea from "./InputTextArea";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PersonalInfo() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -37,6 +37,29 @@ function PersonalInfo() {
     navigate("/ExperiencePage");
   };
 
+  const [firstAndLastNameError, setfirstAndLastNameError] = useState("");
+  const [isNextClicked, setIsNextClicked] = useState(false);
+
+  const handleNextButtonClick = () => {
+    setIsNextClicked(true);
+    const email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    const georgianMobileNum = /^5[0-9]{8}$/;
+
+    if (
+      resumeData.firstName.trim().length < 2 ||
+      resumeData.lastName.trim().length < 2 ||
+      !resumeData.firstName.match(/^[ა-ჰ]+$/) ||
+      !resumeData.lastName.match(/^[ა-ჰ]+$/) ||
+      !email.test(resumeData.email) ||
+      !georgianMobileNum.test(resumeData.mobileNumber)
+    ) {
+      setfirstAndLastNameError("მინიმუმ ორი ასო, ქართული ასოები");
+    } else {
+      setfirstAndLastNameError("");
+      navigateToExperiencePage();
+    }
+  };
+
   return (
     <div className={classes.PersonalInfo}>
       <div className={classes["form-side"]}>
@@ -47,14 +70,23 @@ function PersonalInfo() {
               value={firstName}
               changeHandler={firstNameHandler}
               inputFieldHint="სახელი"
-              hint="მინიმუმ ორი ასო, ქართული ასოები"
+              hint={
+                firstAndLastNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"
+              }
+              className={firstAndLastNameError ? classes["red-border"] : ""}
             />
             <InputField
               value={lastName}
               changeHandler={lastNameHandler}
               inputFieldHint="გვარი"
-              hint="მინიმუმ ორი ასო, ქართული ასოები"
+              hint={
+                firstAndLastNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"
+              }
+              className={firstAndLastNameError ? classes["red-border"] : ""}
             />
+            {isNextClicked && (
+              <div className={classes.error}>{firstAndLastNameError}</div>
+            )}
           </div>
           <div className={classes.btn}>
             <p className={classes.photoUpload}>პირადი ფოტოს ატვირთვა</p>
@@ -64,12 +96,14 @@ function PersonalInfo() {
             value={aboutMe}
             name="ჩემ შესახებ(არასავალდებულო)"
             changeHandler={aboutMeHandler}
+            placeholder="ზოგადი ინფორმაცია თქცენ შესახებ"
           />
           <div className={classes["email-wrapper"]}>
             <InputField
               inputFieldHint="ელ.ფოსტა"
               changeHandler={emailHandler}
               value={email}
+              type={email}
             />
           </div>
           <div className={classes["mobile-number-wrapper"]}>
@@ -84,7 +118,7 @@ function PersonalInfo() {
             <button
               type="button"
               className={classes["btn-next"]}
-              onClick={navigateToExperiencePage}
+              onClick={handleNextButtonClick}
             >
               შემდეგი
             </button>

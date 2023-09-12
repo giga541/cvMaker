@@ -4,7 +4,12 @@ function InputField(props) {
   return (
     <div className={classes.InputField}>
       <label>{props.inputFieldHint}</label>
-      <input value={props.value} type="text" onChange={props.changeHandler} />
+      <input
+        value={props.value}
+        type={props.type}
+        onChange={props.changeHandler}
+        className={props.className}
+      />
       <span>{props.hint}</span>
     </div>
   );
