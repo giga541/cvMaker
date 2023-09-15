@@ -48,8 +48,8 @@ function Resume() {
       <p>{experienceDesc}</p>
       <p>{eduCentre}</p>
       <p className={classes["edu-finish-date"]}>{eduFinishDate}</p>
-      <p> {educationCentreDesc}</p>
       <p> {selectOption}</p>
+      <p> {educationCentreDesc}</p>
       {/* <Line /> */}
     </div>
   );

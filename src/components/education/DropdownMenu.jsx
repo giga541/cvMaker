@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 import classes from "./DropdownMenu.module.css";
 
-function DropdownMenu({ changeHandler, value }) {
+function DropdownMenu({ changeHandler, value, className }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const list = [
@@ -28,29 +28,31 @@ function DropdownMenu({ changeHandler, value }) {
   };
 
   return (
-    <div className={classes.dropdown}>
+    <div>
       <p className={classes.quality}>ხარისხი</p>
-      <button className={classes["dropdown-toggle"]} onClick={toggleDropdown}>
-        {value || "აირჩიეთ"}
-        {!isOpen ? (
-          <AiOutlineCaretDown className={classes["arr-down"]} />
-        ) : (
-          <AiOutlineCaretUp className={classes["arr-up"]} />
-        )}
-        {isOpen && (
-          <div>
-            {list.map((item, i) => (
-              <div
-                key={i}
-                className={classes.items}
-                onClick={() => handleOptionClick(item)}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        )}
-      </button>
+      <div className={`${classes.dropdown} ${className}`}>
+        <button className={classes["dropdown-toggle"]} onClick={toggleDropdown}>
+          {value || "აირჩიეთ"}
+          {!isOpen ? (
+            <AiOutlineCaretDown className={classes["arr-down"]} />
+          ) : (
+            <AiOutlineCaretUp className={classes["arr-up"]} />
+          )}
+          {isOpen && (
+            <div>
+              {list.map((item, i) => (
+                <div
+                  key={i}
+                  className={classes.items}
+                  onClick={() => handleOptionClick(item)}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+        </button>
+      </div>
     </div>
   );
 }

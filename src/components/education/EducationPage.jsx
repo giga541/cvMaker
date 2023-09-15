@@ -8,20 +8,27 @@ import { useNavigate } from "react-router-dom";
 import InputTextArea from "../personalInfo/InputTextArea";
 import Line from "../experience/Line";
 import ResumeContext from "../../context/ResumeContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function EducationPage() {
   const navigate = useNavigate();
   const navigateToExperiencePage = () => {
     navigate("/ExperiencePage");
   };
+  const navigateToLastPage = () => {
+    navigate("/LastPage");
+  };
 
   const { resumeData, setResumeData } = useContext(ResumeContext);
-  const { eduCentre, eduFinishDate, educationCentreDesc, selectOption } =
+  const { eduCentre, selectOption, eduFinishDate, educationCentreDesc } =
     resumeData;
 
   const eduCentreHandler = e => {
     setResumeData({ ...resumeData, eduCentre: e.target.value });
+  };
+
+  const selectOptionHandler = e => {
+    setResumeData({ ...resumeData, selectOption: e });
   };
 
   const eduFinishHandler = e => {
@@ -32,8 +39,42 @@ function EducationPage() {
     setResumeData({ ...resumeData, educationCentreDesc: e.target.value });
   };
 
-  const selectOptionHandler = e => {
-    setResumeData({ ...resumeData, selectOption: e });
+  const [isFinishButtonClicked, setFinishButtonClicked] = useState(false);
+  const [eduCentreError, setEduCentreError] = useState("");
+  const [selectOptionError, setSelectOptionError] = useState("");
+  const [eduFinishError, setEduFinishError] = useState("");
+
+  const handleButtonFinish = () => {
+    setFinishButtonClicked(true);
+    let isValid = true;
+
+    // validate eduCentre
+    if (resumeData.eduCentre.trim().length < 2) {
+      setEduCentreError("მინიმუმ ორი სიმბოლო");
+      isValid = false;
+    } else {
+      setEduCentreError("");
+    }
+
+    // validate selectOption
+    if (!resumeData.selectOption) {
+      setSelectOptionError("მიუთითეთ ხარისხი");
+      isValid = false;
+    } else {
+      setSelectOptionError("");
+    }
+
+    // validate eduFinishDate
+    if (!resumeData.eduFinishDate) {
+      setEduFinishError("მიუთითეთ დასრულების თარიღი");
+      isValid = false;
+    } else {
+      setEduFinishError("");
+    }
+
+    if (isValid) {
+      navigateToLastPage();
+    }
   };
 
   return (
@@ -46,23 +87,40 @@ function EducationPage() {
               value={eduCentre}
               changeHandler={eduCentreHandler}
               inputFieldHint="სასწავლებელი"
-              hint="მინიმუმ ორი სიმბოლო"
+              hint={eduCentreError ? "" : "მინიმუმ ორი სიმბოლო"}
+              className={eduCentreError ? classes["red-border"] : ""}
             />
+            {isFinishButtonClicked && (
+              <div className={classes["pos-error"]}>{eduCentreError}</div>
+            )}
           </div>
           <div className={classes.style}>
             <div>
               <DropdownMenu
                 changeHandler={selectOptionHandler}
                 value={selectOption}
+                className={
+                  selectOptionError ? classes["dropdown-red-border"] : ""
+                }
               />
+              {isFinishButtonClicked && (
+                <div className={classes["select-option-error"]}>
+                  {selectOptionError}
+                </div>
+              )}
             </div>
             <div>
               <Date
                 value={eduFinishDate}
                 changeHandler={eduFinishHandler}
-                className={classes.date}
                 name="დასრულების თარიღი"
+                className={classes.date}
               />
+              {isFinishButtonClicked && (
+                <div className={classes["edu-finish-error"]}>
+                  {eduFinishError}
+                </div>
+              )}
             </div>
           </div>
           <InputTextArea
@@ -72,7 +130,7 @@ function EducationPage() {
             placeholder="განათლების აღწერა"
           />
           <Line />
-          <button className={classes["add-new-edu"]}>
+          <button type="button" className={classes["add-new-edu"]}>
             სხვა სასწავლებლის დამატება
           </button>
           <div className={classes.buttons}>
@@ -83,7 +141,11 @@ function EducationPage() {
             >
               უკან
             </button>
-            <button type="button" className={classes["btn-finish"]}>
+            <button
+              type="button"
+              className={classes["btn-finish"]}
+              onClick={handleButtonFinish}
+            >
               დასრულება
             </button>
           </div>
