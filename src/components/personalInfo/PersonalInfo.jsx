@@ -37,25 +37,60 @@ function PersonalInfo() {
     navigate("/ExperiencePage");
   };
 
-  const [firstAndLastNameError, setfirstAndLastNameError] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [mobileNumberError, setMobileNumberError] = useState("");
   const [isNextClicked, setIsNextClicked] = useState(false);
 
   const handleNextButtonClick = () => {
     setIsNextClicked(true);
-    const email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    const georgianMobileNum = /^5[0-9]{8}$/;
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    const georgianMobileNumPattern = /^5[0-9]{8}$/;
 
+    let isValid = true;
+
+    // Validate first name
     if (
       resumeData.firstName.trim().length < 2 ||
-      resumeData.lastName.trim().length < 2 ||
-      !resumeData.firstName.match(/^[ა-ჰ]+$/) ||
-      !resumeData.lastName.match(/^[ა-ჰ]+$/) ||
-      !email.test(resumeData.email) ||
-      !georgianMobileNum.test(resumeData.mobileNumber)
+      !resumeData.firstName.match(/^[ა-ჰ]+$/)
     ) {
-      setfirstAndLastNameError("მინიმუმ ორი ასო, ქართული ასოები");
+      setFirstNameError("მინიმუმ ორი ასო, ქართული ასოები");
+      isValid = false;
     } else {
-      setfirstAndLastNameError("");
+      setFirstNameError("");
+    }
+
+    // Validate last name
+    if (
+      resumeData.lastName.trim().length < 2 ||
+      !resumeData.lastName.match(/^[ა-ჰ]+$/)
+    ) {
+      setLastNameError("მინიმუმ ორი ასო, ქართული ასოები");
+      isValid = false;
+    } else {
+      setLastNameError("");
+    }
+
+    // Validate email
+    if (!emailPattern.test(resumeData.email)) {
+      setEmailError("სწორად ჩაწერეთ ელ.ფოსტა");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    // Validate mobile number
+    if (!georgianMobileNumPattern.test(resumeData.mobileNumber)) {
+      setMobileNumberError(
+        "სწორად ჩაწერეთ ქართული მობილურის ნომერი (მაგ: 591234567)"
+      );
+      isValid = false;
+    } else {
+      setMobileNumberError("");
+    }
+
+    if (isValid) {
       navigateToExperiencePage();
     }
   };
@@ -66,27 +101,30 @@ function PersonalInfo() {
         <Header headerName="პირადი ინფო" pageNumber="1/3" />
         <form className={classes.form}>
           <div className={classes.inputField}>
-            <InputField
-              value={firstName}
-              changeHandler={firstNameHandler}
-              inputFieldHint="სახელი"
-              hint={
-                firstAndLastNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"
-              }
-              className={firstAndLastNameError ? classes["red-border"] : ""}
-            />
-            <InputField
-              value={lastName}
-              changeHandler={lastNameHandler}
-              inputFieldHint="გვარი"
-              hint={
-                firstAndLastNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"
-              }
-              className={firstAndLastNameError ? classes["red-border"] : ""}
-            />
-            {isNextClicked && (
-              <div className={classes.error}>{firstAndLastNameError}</div>
-            )}
+            <div>
+              <InputField
+                value={firstName}
+                changeHandler={firstNameHandler}
+                inputFieldHint="სახელი"
+                hint={firstNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"}
+                className={firstNameError ? classes["red-border"] : ""}
+              />
+              {isNextClicked && (
+                <div className={classes.error}>{firstNameError}</div>
+              )}
+            </div>
+            <div>
+              <InputField
+                value={lastName}
+                changeHandler={lastNameHandler}
+                inputFieldHint="გვარი"
+                hint={lastNameError ? "" : "მინიმუმ ორი ასო, ქართული ასოები"}
+                className={lastNameError ? classes["red-border"] : ""}
+              />
+              {isNextClicked && (
+                <div className={classes.error}>{lastNameError}</div>
+              )}
+            </div>
           </div>
           <div className={classes.btn}>
             <p className={classes.photoUpload}>პირადი ფოტოს ატვირთვა</p>
@@ -104,15 +142,25 @@ function PersonalInfo() {
               changeHandler={emailHandler}
               value={email}
               type={email}
+              className={emailError ? classes["red-border"] : ""}
             />
+            {isNextClicked && <div className={classes.error}>{emailError}</div>}
           </div>
           <div className={classes["mobile-number-wrapper"]}>
             <InputField
               value={mobileNumber}
-              inputFieldHint="მობილურის ნომერი"
-              hint="უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
               changeHandler={mobileNumberHandler}
+              inputFieldHint="მობილურის ნომერი"
+              hint={
+                mobileNumberError
+                  ? ""
+                  : "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს (მაგ: 591234567)"
+              }
+              className={mobileNumberError ? classes["red-border"] : ""}
             />
+            {isNextClicked && (
+              <div className={classes.error}>{mobileNumberError}</div>
+            )}
           </div>
           <div className={classes["btn-style"]}>
             <button
