@@ -4,7 +4,7 @@ import InputField from "../personalInfo/InputField";
 import Date from "./Date";
 import InputTextArea from "../personalInfo/InputTextArea";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import Resume from "../personalInfo/Resume";
 // import Line from "./Line";
@@ -42,6 +42,53 @@ function ExperiencePage() {
     setResumeData({ ...resumeData, experienceDesc: e.target.value });
   };
 
+  const [isNextClicked, setIsNextClicked] = useState(false);
+  const [positionError, setPositionError] = useState("");
+  const [employerError, setEmployerError] = useState("");
+  const [startingDateError, setStartingDateError] = useState("");
+  const [finishingDateError, setFinishingDateError] = useState("");
+
+  const handleButtonNextClick = () => {
+    setIsNextClicked(true);
+    let isValid = true;
+
+    // validate position
+    if (resumeData.position.trim().length < 2) {
+      setPositionError("მინიმუმ ორი სიმბოლო");
+      isValid = false;
+    } else {
+      setPositionError("");
+    }
+
+    // validate employer
+    if (resumeData.employer.trim().length < 2) {
+      setEmployerError("მინიმუმ ორი სიმბოლო");
+      isValid = false;
+    } else {
+      setEmployerError("");
+    }
+
+    // validate startingDate
+    if (!resumeData.startingDate) {
+      setStartingDateError("მიუთითეთ დაწყების თარიღი");
+      isValid = false;
+    } else {
+      setStartingDateError("");
+    }
+
+    // validate finishingDate
+    if (!resumeData.finishingDate) {
+      setFinishingDateError("მიუთითეთ დასრულების თარიღი");
+      isValid = false;
+    } else {
+      setFinishingDateError("");
+    }
+
+    if (isValid) {
+      navigateToEducationPage();
+    }
+  };
+
   return (
     <div className={classes["experience-page"]}>
       <div className={classes["form-side"]}>
@@ -52,29 +99,46 @@ function ExperiencePage() {
               value={position}
               changeHandler={posHandler}
               inputFieldHint="თანამდებობა"
-              hint="მინიმუმ ორი სიმბოლო"
+              hint={positionError ? "" : "მინიმუმ ორი სიმბოლო"}
+              className={positionError ? classes["red-border"] : ""}
             />
+            {isNextClicked && (
+              <div className={classes["pos-error"]}>{positionError}</div>
+            )}
           </div>
           <div className={classes.employer}>
             <InputField
               value={employer}
               changeHandler={employerHandler}
               inputFieldHint="დამსაქმებელი"
-              hint="მინიმუმ ორი სიმბოლო"
+              hint={employerError ? "" : "მინიმუმ ორი სიმბოლო"}
+              className={employerError ? classes["red-border"] : ""}
             />
+            {isNextClicked && (
+              <div className={classes.error}>{employerError}</div>
+            )}
           </div>
           <div className={classes.dates}>
-            <Date
-              name="დაწყების თარიღი"
-              value={startingDate}
-              changeHandler={startingDateHandler}
-            />
-
-            <Date
-              name="დასრულების თარიღი"
-              value={finishingDate}
-              changeHandler={finishingDateHandler}
-            />
+            <div>
+              <Date
+                name="დაწყების თარიღი"
+                value={startingDate}
+                changeHandler={startingDateHandler}
+              />
+              {isNextClicked && (
+                <div className={classes.error}>{startingDateError}</div>
+              )}
+            </div>
+            <div>
+              <Date
+                name="დასრულების თარიღი"
+                value={finishingDate}
+                changeHandler={finishingDateHandler}
+              />
+              {isNextClicked && (
+                <div className={classes.error}>{finishingDateError}</div>
+              )}
+            </div>
           </div>
           <InputTextArea
             name="აღწერა"
@@ -90,7 +154,7 @@ function ExperiencePage() {
             <button
               type="button"
               className={classes["btn-next"]}
-              onClick={navigateToEducationPage}
+              onClick={handleButtonNextClick}
             >
               შემდეგი
             </button>

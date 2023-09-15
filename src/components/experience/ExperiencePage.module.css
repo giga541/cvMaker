@@ -80,3 +80,20 @@
 .buttons {
   margin-top: 10px;
 }
+
+.red-border {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  position: absolute;
+}
+
+.pos-error {
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  margin-top: 60px;
+}
