@@ -31,7 +31,7 @@ function Resume() {
         alt="userProfile"
         style={{ visibility: profileImage ? "visible" : "hidden" }}
       />
-      <h2>
+      <h2 className={classes["first-last-names"]}>
         {firstName} {lastName}
       </h2>
       <p>{email}</p>
