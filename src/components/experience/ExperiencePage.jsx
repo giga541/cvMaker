@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import Resume from "../personalInfo/Resume";
-// import Line from "./Line";
+import AdditionalExperience from "./AdditionalExprience";
 
 function ExperiencePage() {
   const navigate = useNavigate();
@@ -47,6 +47,7 @@ function ExperiencePage() {
   const [employerError, setEmployerError] = useState("");
   const [startingDateError, setStartingDateError] = useState("");
   const [finishingDateError, setFinishingDateError] = useState("");
+  const [experiences, setExperiences] = useState([]);
 
   const handleButtonNextClick = () => {
     setIsNextClicked(true);
@@ -89,6 +90,20 @@ function ExperiencePage() {
     }
   };
 
+  const handleAddMoreExperienceClick = () => {
+    let isValid = true;
+    if (isValid) {
+      const newExperience = { ...resumeData };
+      setExperiences([...experiences, newExperience]);
+      setResumeData({
+        position: "",
+        employer: "",
+        startingDate: "",
+        finishingDate: "",
+        experienceDesc: "",
+      });
+    }
+  };
   return (
     <div className={classes["experience-page"]}>
       <div className={classes["form-side"]}>
@@ -149,9 +164,15 @@ function ExperiencePage() {
             placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
           />
           <div className={classes.line}></div>
-          <button className={classes["add-btn"]}>
-            მეტი გამოცდილების დამატება
-          </button>
+          <div>
+            <button
+              className={classes["add-btn"]}
+              type="button"
+              onClick={handleAddMoreExperienceClick}
+            >
+              მეტი გამოცდილების დამატება
+            </button>
+          </div>
           <div className={classes.buttons}>
             <button
               type="button"
@@ -169,10 +190,12 @@ function ExperiencePage() {
             </button>
           </div>
         </form>
+        {experiences.map((experience, index) => (
+          <AdditionalExperience key={index} experience={experience} />
+        ))}
       </div>
       <div className={classes["resume-side"]}>
         <Resume />
-        {/* <Line /> */}
       </div>
     </div>
   );

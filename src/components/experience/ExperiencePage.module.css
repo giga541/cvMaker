@@ -1,5 +1,6 @@
 .experience-page {
   display: flex;
+  overflow-y: scroll;
 }
 
 .form-side {

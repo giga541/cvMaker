@@ -6,21 +6,21 @@ import Line from "../experience/Line";
 function Resume() {
   const { resumeData } = useContext(ResumeContext);
   const {
-    firstName,
-    lastName,
-    aboutMe,
-    email,
-    mobileNumber,
-    profileImage,
-    position,
-    employer,
-    startingDate,
-    finishingDate,
-    experienceDesc,
-    eduCentre,
-    eduFinishDate,
-    educationCentreDesc,
-    selectOption,
+    firstName = "",
+    lastName = "",
+    aboutMe = "",
+    email = "",
+    mobileNumber = "",
+    profileImage = "",
+    position = "",
+    employer = "",
+    startingDate = "",
+    finishingDate = "",
+    experienceDesc = "",
+    eduCentre = "",
+    eduFinishDate = "",
+    selectOption = "",
+    educationCentreDesc = "",
   } = resumeData;
 
   return (
