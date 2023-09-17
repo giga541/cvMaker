@@ -5,7 +5,7 @@ function Date(props) {
       <div>{props.name}</div>
       <input
         value={props.value}
-        className={classes.input}
+        className={`${classes.input} ${props.className}`}
         type="date"
         onChange={props.changeHandler}
       />

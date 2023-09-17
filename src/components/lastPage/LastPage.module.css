@@ -1,0 +1,10 @@
+.last-page {
+  box-sizing: border-box;
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: 25%;
+  top: 50px;
+  background: #ffffff;
+  border: 0.8px solid #000000;
+}

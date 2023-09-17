@@ -23,19 +23,19 @@ function EducationPage() {
   const { eduCentre, selectOption, eduFinishDate, educationCentreDesc } =
     resumeData;
 
-  const eduCentreHandler = e => {
+  const eduCentreHandler = (e) => {
     setResumeData({ ...resumeData, eduCentre: e.target.value });
   };
 
-  const selectOptionHandler = e => {
+  const selectOptionHandler = (e) => {
     setResumeData({ ...resumeData, selectOption: e });
   };
 
-  const eduFinishHandler = e => {
+  const eduFinishHandler = (e) => {
     setResumeData({ ...resumeData, eduFinishDate: e.target.value });
   };
 
-  const educationDescHandler = e => {
+  const educationDescHandler = (e) => {
     setResumeData({ ...resumeData, educationCentreDesc: e.target.value });
   };
 
@@ -114,7 +114,7 @@ function EducationPage() {
                 value={eduFinishDate}
                 changeHandler={eduFinishHandler}
                 name="დასრულების თარიღი"
-                className={classes.date}
+                className={eduFinishError ? classes["red-border"] : ""}
               />
               {isFinishButtonClicked && (
                 <div className={classes["edu-finish-error"]}>

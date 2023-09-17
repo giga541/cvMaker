@@ -22,23 +22,23 @@ function ExperiencePage() {
   const { position, employer, startingDate, finishingDate, experienceDesc } =
     resumeData;
 
-  const posHandler = e => {
+  const posHandler = (e) => {
     setResumeData({ ...resumeData, position: e.target.value });
   };
 
-  const employerHandler = e => {
+  const employerHandler = (e) => {
     setResumeData({ ...resumeData, employer: e.target.value });
   };
 
-  const startingDateHandler = e => {
+  const startingDateHandler = (e) => {
     setResumeData({ ...resumeData, startingDate: e.target.value });
   };
 
-  const finishingDateHandler = e => {
+  const finishingDateHandler = (e) => {
     setResumeData({ ...resumeData, finishingDate: e.target.value });
   };
 
-  const experienceDescHandler = e => {
+  const experienceDescHandler = (e) => {
     setResumeData({ ...resumeData, experienceDesc: e.target.value });
   };
 
@@ -124,6 +124,7 @@ function ExperiencePage() {
                 name="დაწყების თარიღი"
                 value={startingDate}
                 changeHandler={startingDateHandler}
+                className={startingDateError ? classes["red-border"] : ""}
               />
               {isNextClicked && (
                 <div className={classes.error}>{startingDateError}</div>
@@ -134,6 +135,7 @@ function ExperiencePage() {
                 name="დასრულების თარიღი"
                 value={finishingDate}
                 changeHandler={finishingDateHandler}
+                className={finishingDateError ? classes["red-border"] : ""}
               />
               {isNextClicked && (
                 <div className={classes.error}>{finishingDateError}</div>

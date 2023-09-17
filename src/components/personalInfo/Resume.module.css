@@ -8,17 +8,17 @@
   border-radius: 100px;
 }
 
-.about-me {
+.same-style {
   font-family: "Helvetica Neue";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  margin-top: 34px;
+  margin-top: 30px;
   color: #f93b1d;
 }
 
 .mobile-number {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 p {

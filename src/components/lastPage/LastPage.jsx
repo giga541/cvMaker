@@ -1,9 +1,10 @@
 import React from "react";
 import Resume from "../personalInfo/Resume";
+import classes from "./LastPage.module.css";
 
 function LastPage() {
   return (
-    <div>
+    <div className={classes["last-page"]}>
       <Resume />
     </div>
   );

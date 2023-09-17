@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ResumeContext from "../../context/ResumeContext";
 import classes from "./Resume.module.css";
+import Line from "../experience/Line";
 
 function Resume() {
   const { resumeData } = useContext(ResumeContext);
@@ -36,21 +37,42 @@ function Resume() {
       <p>{email}</p>
       <p className={classes["mobile-number"]}>{mobileNumber}</p>
       {aboutMe.length > 0 && (
-        <span className={classes["about-me"]}>ჩემ შესახებ</span>
+        <span className={classes["same-style"]}>ჩემ შესახებ</span>
       )}
       <p>{aboutMe}</p>
-      <p>{position}</p>
-      <p>{employer}</p>
-      <div className={classes.dates}>
-        <p className={classes["starting-date"]}>{startingDate}</p>
-        <p>{finishingDate}</p>
+      <div>
+        {(position.length > 0 ||
+          employer.length > 0 ||
+          startingDate.length > 0 ||
+          finishingDate.length > 0) && (
+          <>
+            <Line />
+            <span className={classes["same-style"]}>გამოცდილება</span>
+          </>
+        )}
+        <p>{position}</p>
+        <p>{employer}</p>
+        <div className={classes.dates}>
+          <p className={classes["starting-date"]}>{startingDate}</p>
+          <p>{finishingDate}</p>
+        </div>
+        <p>{experienceDesc}</p>
       </div>
-      <p>{experienceDesc}</p>
-      <p>{eduCentre}</p>
-      <p className={classes["edu-finish-date"]}>{eduFinishDate}</p>
-      <p> {selectOption}</p>
-      <p> {educationCentreDesc}</p>
-      {/* <Line /> */}
+      <div>
+        {(eduCentre.length > 0 ||
+          eduFinishDate.length > 0 ||
+          selectOption.length > 0 ||
+          educationCentreDesc.length > 0) && (
+          <>
+            <Line />
+            <span className={classes["same-style"]}>განათლება</span>
+          </>
+        )}
+        <p>{eduCentre}</p>
+        <p className={classes["edu-finish-date"]}>{eduFinishDate}</p>
+        <p> {selectOption}</p>
+        <p> {educationCentreDesc}</p>
+      </div>
     </div>
   );
 }
