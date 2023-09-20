@@ -16,6 +16,15 @@ function Header(props) {
       email: "",
       mobileNumber: "",
       profileImage: null,
+      position: "",
+      employer: "",
+      startingDate: "",
+      finishingDate: "",
+      experienceDesc: "",
+      eduCentre: "",
+      eduFinishDate: "",
+      educationCentreDesc: "",
+      selectOption: "",
     });
     navigate("/");
   };

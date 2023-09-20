@@ -23,19 +23,19 @@ function EducationPage() {
   const { eduCentre, selectOption, eduFinishDate, educationCentreDesc } =
     resumeData;
 
-  const eduCentreHandler = (e) => {
+  const eduCentreHandler = e => {
     setResumeData({ ...resumeData, eduCentre: e.target.value });
   };
 
-  const selectOptionHandler = (e) => {
+  const selectOptionHandler = e => {
     setResumeData({ ...resumeData, selectOption: e });
   };
 
-  const eduFinishHandler = (e) => {
+  const eduFinishHandler = e => {
     setResumeData({ ...resumeData, eduFinishDate: e.target.value });
   };
 
-  const educationDescHandler = (e) => {
+  const educationDescHandler = e => {
     setResumeData({ ...resumeData, educationCentreDesc: e.target.value });
   };
 
@@ -130,9 +130,7 @@ function EducationPage() {
             placeholder="განათლების აღწერა"
           />
           <Line />
-          <button type="button" className={classes["add-new-edu"]}>
-            სხვა სასწავლებლის დამატება
-          </button>
+
           <div className={classes.buttons}>
             <button
               type="button"

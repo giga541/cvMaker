@@ -1,6 +1,8 @@
 .dropdown {
   position: absolute;
   margin-top: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 .dropdown-toggle {
   width: 240px;
